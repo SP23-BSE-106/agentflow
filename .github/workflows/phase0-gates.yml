@@ -1,0 +1,41 @@
+name: Phase 0 gates
+
+# Fails the build when a Phase 0 security fix regresses: the serverless
+# function budget, the code-execution sink, or the dev-secret fallback.
+# Runs on every push and pull request to main.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  phase0-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Route budget — at most 12 route.ts files (Vercel Hobby limit)
+        run: |
+          count=$(find src/app/api -name route.ts | wc -l)
+          echo "route.ts count: $count"
+          if [ "$count" -gt 12 ]; then
+            echo "FAIL: $count route.ts files, budget is 12. Fold the new route into an existing [[...path]] catch-all instead."
+            exit 1
+          fi
+
+      - name: No code-execution sinks in src/
+        run: |
+          if grep -rn --include='*.ts' --include='*.tsx' -E 'new Function|eval\(|Function\(' src/; then
+            echo "FAIL: code-execution sink found in src/."
+            exit 1
+          fi
+          echo "No new Function / eval / Function( in src/."
+
+      - name: No dev-secret fallback
+        run: |
+          if grep -rn "|| 'dev'" src/; then
+            echo "FAIL: dev default secret fallback found."
+            exit 1
+          fi
+          echo "No dev secret fallback."

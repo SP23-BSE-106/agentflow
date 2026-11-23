@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../../",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "./out",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "rootDir": "../../src",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2020"
+  },
+  "include": [
+    "../../src/lib/rag/grounding.ts",
+    "../../src/lib/agents/validation.ts",
+    "../../src/lib/workflow/condition.ts",
+    "../../src/lib/workflow/branching.ts",
+    "../../src/lib/orchestration/resolveNodes.ts",
+    "../../src/lib/llm.ts",
+    "../../src/lib/orchestration/evaluator.ts",
+    "../../src/lib/workflow/nodeRunner.ts",
+    "../../src/lib/nodes/executors/set.ts",
+    "../../src/lib/nodes/executors/http.ts",
+    "../../src/lib/workflow/executor.ts",
+    "../../src/lib/ssrf.ts",
+    "../../src/lib/expression/engine.ts",
+    "../../src/lib/guestWorkflow.ts"
+  ]
+}

@@ -1,0 +1,71 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# disk-backed scratch dir used as TMPDIR for local verification runs
+/.tmp-build/
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# model / dataset artifacts
+nemotron-*.tar.gz
+
+# local embedding model weights (downloaded on first use)
+/.hf-cache/
+
+/brag-output
+
+# compiled output of the workflow engine test suite
+/tests/kimi-engine/out/
+
+# compiled output of the test suites
+/tests/phase0/out/
+/tests/phase1/out/
+/tests/phase2/out/
+/tests/phase3/out/
+/tests/production-hardening/out/
+/tests/team/out/
+/tests/team-view/out/
+/tests/multi-agent-team/out/
+
+# disk-backed scratch for local builds (TMPDIR)
+/.tmp-build/
+tests/n8n/out/
+/.tmp-gate/

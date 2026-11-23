@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": "../..",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "outDir": "./out",
+    "rootDir": "../.."
+  },
+  "include": [
+    "../../src/lib/auth/jwtCore.ts",
+    "../../src/lib/ssrf.ts",
+    "../../src/lib/inputLimits.ts",
+    "../../src/lib/runs/status.ts",
+    "test.ts"
+  ]
+}
